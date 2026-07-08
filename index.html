@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RatioLens — Financial Statement Analyzer</title>
+  <meta name="description" content="Enter balance sheet and income statement figures, get an instant financial ratio dashboard — liquidity, profitability, leverage, efficiency — with a health score and plain-English interpretations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230066FF'/%3E%3Ctext x='16' y='22' font-family='Inter,Arial,sans-serif' font-size='15' font-weight='800' fill='white' text-anchor='middle'%3E%25%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="logo"><span class="mark">RL</span>RatioLens</div>
+      <p class="tagline">Financial statements → instant insight. Enter balance sheet and income statement figures and get 14 key ratios across liquidity, profitability, leverage, and efficiency — each scored, benchmarked, and explained in plain English.</p>
+    </div>
+  </header>
+
+  <main class="container grid">
+
+    <!-- inputs -->
+    <section class="card" aria-label="Financial statement inputs">
+      <div id="inputs"></div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="sample">Load sample company</button>
+        <button class="btn btn-outline" id="reset">Reset</button>
+      </div>
+      <p class="footnote">All analysis runs in your browser — nothing is uploaded. Benchmarks are general-purpose; sector norms vary.</p>
+    </section>
+
+    <!-- dashboard -->
+    <section aria-label="Ratio dashboard">
+      <p id="empty-note">Enter figures on the left — or load the sample company — to see the dashboard.</p>
+
+      <div id="dashboard" hidden>
+        <div class="health-row card">
+          <div class="gauge-wrap">
+            <svg width="128" height="128" viewBox="0 0 128 128" aria-hidden="true">
+              <circle class="gauge-bg" cx="64" cy="64" r="52"></circle>
+              <circle class="gauge-arc" id="gauge-arc" cx="64" cy="64" r="52"></circle>
+            </svg>
+            <div class="gauge-center">
+              <div>
+                <div class="n" id="gauge-num">0</div>
+                <div class="l">Health score</div>
+              </div>
+            </div>
+          </div>
+          <div class="gauge-side">
+            <h2>Financial health</h2>
+            <p class="grade-line">Overall grade <strong id="gauge-grade">—</strong> · average of the four category scores below</p>
+          </div>
+          <div class="cat-scores" id="cat-scores"></div>
+        </div>
+
+        <div id="ratio-groups"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Built by <a href="https://bulbringai.com" rel="noopener">Noah Bulbring</a> · <a href="https://github.com/NoahBulbring/ratiolens" rel="noopener">Source on GitHub</a>
+    </div>
+  </footer>
+
+  <script src="ratios.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

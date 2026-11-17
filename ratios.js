@@ -1,6 +1,5 @@
-/* ── RatioLens — ratio definitions + scoring ──────────────────
-   Each ratio: compute from inputs, benchmark bands, and a
-   plain-English interpretation. Bands: [poor|watch|good]      */
+/* Ratio definitions and scoring. Each ratio: compute from inputs, benchmark
+   bands [poor | watch | good], and a one-line interpretation. */
 
 const INPUT_FIELDS = [
   { group: 'Balance sheet', fields: [
@@ -22,7 +21,6 @@ const INPUT_FIELDS = [
   ]},
 ];
 
-/* Demo figures: a healthy small distribution business */
 const SAMPLE = {
   cash: 85000, receivables: 120000, inventory: 140000,
   currentAssets: 355000, totalAssets: 720000,
@@ -35,7 +33,7 @@ const fmtX = (v) => v.toFixed(2) + '×';
 const fmtPct = (v) => (v * 100).toFixed(1) + '%';
 const fmtDays = (v) => Math.round(v) + ' days';
 
-/* status: score 0 (poor) → 1 (strong), linear between bounds  */
+/* Score 0 (poor) to 1 (strong), linear between the two bounds. */
 function bandScore(v, poor, good, invert = false) {
   let s = (v - poor) / (good - poor);
   s = Math.max(0, Math.min(1, s));

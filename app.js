@@ -1,5 +1,3 @@
-/* ── RatioLens — UI ───────────────────────────────────────── */
-
 const $ = (id) => document.getElementById(id);
 
 function buildInputs() {
@@ -44,7 +42,6 @@ function statusCls(score) {
   return score >= 0.66 ? 'good' : score >= 0.4 ? 'watch' : 'poor';
 }
 
-/* SVG donut gauge for the health score */
 function drawGauge(score) {
   const pctVal = Math.round(score * 100);
   const r = 52, c = 2 * Math.PI * r;
@@ -63,7 +60,6 @@ function render() {
   const a = analyze(d);
   drawGauge(a.health);
 
-  // category score chips
   $('cat-scores').innerHTML = CATEGORIES.map((c) => {
     const s = a.byCat[c].score;
     return `<div class="cat-chip ${statusCls(s)}">
@@ -72,7 +68,6 @@ function render() {
     </div>`;
   }).join('');
 
-  // ratio cards by category
   $('ratio-groups').innerHTML = CATEGORIES.map((c) => `
     <h2 class="sub">${c}</h2>
     <div class="ratio-grid">

@@ -1,30 +1,25 @@
-# RatioLens — Financial Statement Analyzer
+# RatioLens
 
-Type in balance sheet and income statement figures and get an **instant ratio dashboard**: 14 key ratios across liquidity, profitability, leverage, and efficiency — each one scored against benchmarks, graded, and explained in plain English, with an overall financial health score on a live gauge.
+Enter balance sheet and income statement figures and get a ratio dashboard: 14 ratios across liquidity, profitability, leverage, and efficiency, each scored against benchmarks and explained, with an overall 0–100 health score.
 
-**[Live demo →](https://noahbulbring.github.io/ratiolens/)** — click *"Load sample company"* to see a full analysis instantly.
+Live demo: https://noahbulbring.github.io/ratiolens/ — click "Load sample company" to see a full analysis.
 
 ![RatioLens screenshot](screenshot.png)
 
-## What it computes
+## Ratios
 
 | Category | Ratios |
 |---|---|
-| **Liquidity** | Current ratio · Quick ratio · Cash ratio |
-| **Profitability** | Gross margin · Operating margin · Net margin · Return on equity · Return on assets |
-| **Leverage** | Debt-to-equity · Debt ratio · Interest coverage |
-| **Efficiency** | Asset turnover · Inventory turnover · Days sales outstanding |
+| Liquidity | Current ratio · Quick ratio · Cash ratio |
+| Profitability | Gross margin · Operating margin · Net margin · Return on equity · Return on assets |
+| Leverage | Debt-to-equity · Debt ratio · Interest coverage |
+| Efficiency | Asset turnover · Inventory turnover · Days sales outstanding |
 
-Every ratio card shows the value, a benchmark meter, a green/amber/red status, and a one-line interpretation of what the number actually means for the business. Category grades (A–F) roll up into a single 0–100 health score.
+Each ratio card shows the value, a benchmark meter, a status, and a one-line interpretation. Category grades (A–F) roll up into the health score.
 
-## Features
+## Run it
 
-- **Live recalculation** — the whole dashboard updates on every keystroke
-- **Plain-English insights** — interpretations change with the numbers, not generic tooltips
-- **Sample company** — one click loads a realistic small distribution business
-- **Zero dependencies, fully client-side** — plain HTML/CSS/JS; your financials never leave the browser
-
-## Run locally
+No build step, no dependencies — plain HTML/CSS/JS, everything runs in the browser.
 
 ```bash
 git clone https://github.com/NoahBulbring/ratiolens.git
@@ -38,15 +33,9 @@ Run the engine tests with Node:
 node test.js
 ```
 
-## Disclaimer
+## Notes
 
-Benchmark bands are general-purpose heuristics — healthy values differ meaningfully by industry (a grocer's margins are not a SaaS company's). Not financial advice.
-
-## Build prompt
-
-This project was built end-to-end by an AI agent from this prompt:
-
-> Build a financial statement analyzer: enter balance sheet + income statement figures, get an instant ratio dashboard (liquidity, profitability, leverage, efficiency) with a health score and plain-English interpretations.
+Benchmark bands are general-purpose heuristics — healthy values differ by industry (a grocer's margins are not a SaaS company's). Not financial advice.
 
 ## License
 

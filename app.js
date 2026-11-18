@@ -32,6 +32,7 @@ function loadSample() {
 }
 
 function grade(score) {
+  // bands are rough on purpose — an A should be hard to get
   if (score >= 0.85) return 'A';
   if (score >= 0.7) return 'B';
   if (score >= 0.5) return 'C';
@@ -52,6 +53,7 @@ function drawGauge(score) {
 
 function render() {
   const d = readInputs();
+  // nothing entered yet, keep the dashboard hidden
   const hasData = d.revenue > 0 || d.totalAssets > 0;
   $('empty-note').hidden = hasData;
   $('dashboard').hidden = !hasData;
@@ -85,6 +87,8 @@ function render() {
 
 buildInputs();
 $('sample').addEventListener('click', loadSample);
+// TODO: let users save a company and come back to it
+// loadSample(); // don't auto-load — start blank instead
 $('reset').addEventListener('click', () => {
   for (const g of INPUT_FIELDS) for (const f of g.fields) $(f.id).value = 0;
   render();

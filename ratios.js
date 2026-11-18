@@ -21,6 +21,7 @@ const INPUT_FIELDS = [
   ]},
 ];
 
+// made-up mid-sized company, roughly healthy
 const SAMPLE = {
   cash: 85000, receivables: 120000, inventory: 140000,
   currentAssets: 355000, totalAssets: 720000,
@@ -33,7 +34,9 @@ const fmtX = (v) => v.toFixed(2) + '×';
 const fmtPct = (v) => (v * 100).toFixed(1) + '%';
 const fmtDays = (v) => Math.round(v) + ' days';
 
-/* Score 0 (poor) to 1 (strong), linear between the two bounds. */
+/* Score 0 (poor) to 1 (strong), linear between the two bounds.
+   For debt ratios good < poor, so the bands get passed (poor, good)
+   and the same math works. */
 function bandScore(v, poor, good, invert = false) {
   let s = (v - poor) / (good - poor);
   s = Math.max(0, Math.min(1, s));
@@ -134,6 +137,7 @@ const RATIOS = [
 
 const CATEGORIES = ['Liquidity', 'Profitability', 'Leverage', 'Efficiency'];
 
+// TODO: sector benchmarks — a grocer and a SaaS company shouldn't share bands
 function analyze(d) {
   const results = RATIOS.map((r) => {
     const value = r.calc(d);
